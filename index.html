@@ -200,25 +200,13 @@ footer{background:#10263e;color:#dce4ec;padding:34px 0;margin-top:0;}
 <div class="section-head">
 <div class="kicker">Inscripción</div>
 <h2>Reserva tu participación en Homenaje Soyapaneco</h2>
-<p class="lead">Completa tus datos y envía tu inscripción por correo o WhatsApp. Los datos de pago están disponibles en la sección Reserva y pago.</p>
+<p class="lead">Completa el formulario y pulsa Enviar para registrar tu participación. Los datos de pago están disponibles en la sección Reserva y pago.</p>
 </div>
 <div class="share-grid">
 <div class="share-card">
-<form id="registroForm" onsubmit="return false;">
-<label for="regNombre"><strong>Nombre completo</strong></label>
-<input id="regNombre" placeholder="Nombre y apellido" required="" style="width:100%;padding:12px;margin:6px 0 14px;border:1px solid #d9ccb8;border-radius:10px;" type="text"/>
-<label for="regCorreo"><strong>Correo electrónico</strong></label>
-<input id="regCorreo" placeholder="correo@ejemplo.com" required="" style="width:100%;padding:12px;margin:6px 0 14px;border:1px solid #d9ccb8;border-radius:10px;" type="email"/>
-<label for="regWhatsapp"><strong>WhatsApp</strong></label>
-<input id="regWhatsapp" placeholder="Ej. +503 7000 0000" required="" style="width:100%;padding:12px;margin:6px 0 14px;border:1px solid #d9ccb8;border-radius:10px;" type="tel"/>
-<label for="regPersonas"><strong>Número de personas</strong></label>
-<input id="regPersonas" min="1" style="width:100%;padding:12px;margin:6px 0 14px;border:1px solid #d9ccb8;border-radius:10px;" type="number" value="1"/>
-<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;">
-<button class="btn primary" onclick="enviarRegistroWhatsApp()" type="button">Enviar por WhatsApp</button>
-<button class="btn secondary" onclick="enviarRegistroCorreo()" type="button">Enviar por correo</button>
-</div>
-<p class="small" style="margin-top:12px;">El sitio no publica tus datos. El mensaje se prepara en tu dispositivo para que lo envíes por el canal que elijas.</p>
-</form>
+<iframe title="Inscripción — Homenaje Soyapaneco" src="https://docs.google.com/forms/d/e/1FAIpQLSceF-IzUZCNUceARjMJT6xZvoJJeiny9dt-qdrsLbGyAByiGw/viewform?embedded=true" width="100%" height="1250" style="border:0;display:block;" loading="lazy">Cargando formulario…</iframe>
+<p><a class="btn primary" href="https://forms.gle/kAVDiFKoYHknTP279" target="_blank" rel="noopener">Abrir formulario de inscripción</a></p>
+<p class="small">Pulsa Enviar al terminar. Tu inscripción se guardará para los organizadores; tus datos no se publican en este sitio. La inscripción no confirma el pago.</p>
 </div>
 <div class="contact-card">
 <h3>Información del encuentro</h3>
@@ -270,29 +258,6 @@ footer{background:#10263e;color:#dce4ec;padding:34px 0;margin-top:0;}
 </footer>
 
 <script>
-function datosRegistro(){
-  if(!document.getElementById("registroForm").reportValidity()) return null;
-  const nombre=document.getElementById('regNombre').value.trim();
-  const correo=document.getElementById('regCorreo').value.trim();
-  const whatsapp=document.getElementById('regWhatsapp').value.trim();
-  const personas=document.getElementById('regPersonas').value || '1';
-  if(!nombre || !correo || !whatsapp){ alert('Completa nombre, correo y WhatsApp.'); return null; }
-  return {nombre,correo,whatsapp,personas};
-}
-function textoRegistro(d){
-  return `INSCRIPCIÓN – HOMENAJE SOYAPANECO\nII Encuentro de Amigos de Soyapango\n\nNombre: ${d.nombre}\nCorreo: ${d.correo}\nWhatsApp: ${d.whatsapp}\nPersonas: ${d.personas}\n\nAporte: $30 por persona.\nBanco Agrícola Comercial\nCuenta de ahorro: 003520298427\nA nombre de Luis Antonio Palomo.`;
-}
-function enviarRegistroWhatsApp(){
-  const d=datosRegistro(); if(!d)return;
-  const url='https://wa.me/50375876306?text='+encodeURIComponent(textoRegistro(d));
-  window.open(url,'_blank');
-}
-function enviarRegistroCorreo(){
-  const d=datosRegistro(); if(!d)return;
-  const subject='Inscripción – Homenaje Soyapaneco';
-  const body=textoRegistro(d);
-  window.location.href='mailto:cesar.rios5@icloud.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
-}
 async function compartirFotos(){
   const input=document.getElementById('fotoInput');
   const files=[...input.files].slice(0,10);
